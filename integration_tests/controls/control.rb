@@ -2,18 +2,14 @@
 
 title "sample section"
 
-# you can also use plain tests
-describe file("/tmp") do
-  it { should be_directory }
-end
-
-# you add controls here
 control "tmp-1.0" do                        # A unique ID for this control
   impact 0.7                                # The criticality, if this control fails.
-  title "Create /tmp directory"             # A human-readable title
-  desc "An optional description..."
-  describe file("/tmp") do                  # The actual test
-    it { should be_directory }
+  title "Test access to kv secret"             # A human-readable title
+  desc "Test access to kv secret"
+  describe http('http://localhost:8200/v1/secret/dev-adeel',
+              method: 'GET',
+              headers: {'X-Vault-Token' => "#{vault-token}"})
+    its('status') { should cmp 200 }
   end
 end
 
