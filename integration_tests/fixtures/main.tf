@@ -30,3 +30,5 @@ resource "vault_generic_secret" "default" {
 }
 EOT
 }
+
+resource "template_dir" "default"
