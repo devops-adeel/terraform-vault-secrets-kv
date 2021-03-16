@@ -1,16 +1,17 @@
-# copyright: 2018, The Authors
-#
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-token     = attribute('token'     , description : 'token for vault'     )
-url       = attribute('url'       , description : 'url for vault'       )
-namespace = attribute('namespace' , description : 'namespace for vault' )
-path      = attribute('path'      , description : 'path for vault'      )
+token     = attribute('token', description: 'token for vault')
+url       = attribute('url', description: 'url for vault')
+namespace = attribute('namespace', description: 'namespace for vault')
+path      = attribute('path', description: 'path for vault')
+
 
 title "Vault Integration Test"
 
-control "vlt-1.0" do                        # A unique ID for this control
-  impact 0.7                                # The criticality, if this control fails.
-  title "Test access to kv secret"             # A human-readable title
+control "vlt-1.0" do
+  impact 0.7
+  title "Test access to kv secret"
   desc "Test access to kv secret"
   describe http("#{url}/v1/#{namespace}/#{path}",
               method: 'GET',
@@ -19,9 +20,9 @@ control "vlt-1.0" do                        # A unique ID for this control
   end
 end
 
-control "vlt-2.0" do                        # A unique ID for this control
-  impact 0.7                                # The criticality, if this control fails.
-  title "Test health"             # A human-readable title
+control "vlt-2.0" do
+  impact 0.7
+  title "Test health"
   desc "Test health"
   describe http("#{url}/v1/sys/health?perfstandbyok=true",
               method: 'GET') do
