@@ -4,13 +4,13 @@ locals {
   service          = "adeel"
 }
 
+data "vault_auth_backend" "default" {
+  path = "approle"
+}
+
 module "default" {
   source     = "./module"
   entity_ids = [module.vault_approle.entity_id]
-}
-
-data "vault_auth_backend" "default" {
-  path = "approle"
 }
 
 module "vault_approle" {
