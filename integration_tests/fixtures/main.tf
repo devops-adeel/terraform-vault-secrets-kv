@@ -36,18 +36,3 @@ resource "vault_generic_secret" "default" {
 }
 EOT
 }
-
-data "template_file" "default" {
-  template = file("attributes.tpl")
-  vars = {
-    token = vault_approle_auth_backend_login.default.client_token
-    url       = var.vault_address
-    namespace = "admin/terraform-vault-secrets-kv/"
-    path      = format("secret/%s-%s", local.env, local.service)
-  }
-}
-
-resource "local_file" "default" {
-  content = data.template_file.default.rendered
-  filename = "${path.module}/../attributes/attributes.yml"
-}
