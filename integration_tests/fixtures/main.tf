@@ -1,7 +1,7 @@
 locals {
   application_name = "terraform-modules-development-kv"
   env              = "dev"
-  service          = "integration_test"
+  service          = "integration-test"
 }
 
 data "vault_auth_backend" "default" {
@@ -28,7 +28,7 @@ resource "vault_approle_auth_backend_login" "default" {
 }
 
 resource "vault_generic_secret" "default" {
-  path = format("secret/%s-%s", local.env, local.service)
+  path = format("${module.default.backend_path}/%s-%s", local.env, local.service)
 
   data_json = <<EOT
 {

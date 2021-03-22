@@ -11,5 +11,5 @@ output "namespace" {
 }
 
 output "path" {
-  value = format("secret/%s-%s", local.env, local.service)
+  value = format("secret/data/%s-%s", local.env, local.service)
 }
