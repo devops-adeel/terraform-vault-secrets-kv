@@ -28,7 +28,11 @@ resource "vault_approle_auth_backend_login" "default" {
 }
 
 resource "vault_generic_secret" "default" {
-  path = format("${module.default.backend_path}/%s-%s", local.env, local.service)
+  path = format("secret/%s-%s", local.env, local.service)
+
+  depends_on = [
+    module.default,
+  ]
 
   data_json = <<EOT
 {
