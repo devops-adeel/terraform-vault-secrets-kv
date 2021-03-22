@@ -1,7 +1,7 @@
 locals {
   application_name = "terraform-modules-development-kv"
   env              = "dev"
-  service          = "adeel"
+  service          = "integration_test"
 }
 
 data "vault_auth_backend" "default" {
@@ -32,7 +32,7 @@ resource "vault_generic_secret" "default" {
 
   data_json = <<EOT
 {
-  "integration_test": "fake_password"
+  "password": "fake_password"
 }
 EOT
 }
