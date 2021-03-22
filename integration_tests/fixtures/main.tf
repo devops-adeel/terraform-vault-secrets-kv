@@ -1,16 +1,16 @@
 locals {
   application_name = "terraform-modules-development-kv"
   env              = "dev"
-  service          = "adeel"
+  service          = "integration-test"
+}
+
+data "vault_auth_backend" "default" {
+  path = "approle"
 }
 
 module "default" {
   source     = "./module"
   entity_ids = [module.vault_approle.entity_id]
-}
-
-data "vault_auth_backend" "default" {
-  path = "approle"
 }
 
 module "vault_approle" {
@@ -30,24 +30,13 @@ resource "vault_approle_auth_backend_login" "default" {
 resource "vault_generic_secret" "default" {
   path = format("secret/%s-%s", local.env, local.service)
 
+  depends_on = [
+    module.default,
+  ]
+
   data_json = <<EOT
 {
-  "integration_test": "fake_password"
+  "password": "fake_password"
 }
 EOT
-}
-
-data "template_file" "default" {
-  template = file("attributes.tpl")
-  vars = {
-    token = vault_approle_auth_backend_login.default.client_token
-    url       = var.vault_address
-    namespace = "admin/terraform-vault-secrets-kv/"
-    path      = format("secret/%s-%s", local.env, local.service)
-  }
-}
-
-resource "local_file" "default" {
-  content = data.template_file.default.rendered
-  filename = "${path.module}/../attributes/attributes.yml"
 }

@@ -3,6 +3,12 @@ locals {
   secret_type       = "secret"
 }
 
+resource "vault_mount" "default" {
+  path        = "secret"
+  type        = "kv-v2"
+  description = "Default Mount for KV Secrets Engine"
+}
+
 data "vault_policy_document" "default" {
   rule {
     path         = "${local.secret_type}/+/{{identity.entity.metadata.env}}-{{identity.entity.metadata.service}}"
