@@ -1,34 +1,49 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+Usage:
+
+```hcl
+
+module "vault_kv" {
+  source      = "git::https://github.com/devops-adeel/terraform-vault-secrets-kv.git?ref=v0.1.0"
+  entity_ids = [module.vault_approle.entity_id]
+}
+```
+
 ## Requirements
 
 No requirements.
 
 ## Providers
 
-| Name    | Version   |
-| ------  | --------- |
-| `vault` | n/a       |
+| Name | Version |
+|------|---------|
+| <a name="provider_vault"></a> [vault](#provider\_vault) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name                                                                                                                                     |
-| ------                                                                                                                                   |
-| [`vault_identity_entity`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity)              |
-| [`vault_identity_entity`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_entity)                 |
-| [`vault_identity_group`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group)                   |
-| [`vault_identity_group_policies`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_policies) |
-| [`vault_policy`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy)                                   |
-| [`vault_policy_document`](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document)              |
+| Name | Type |
+|------|------|
+| [vault_identity_entity.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_entity) | resource |
+| [vault_identity_group.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group) | resource |
+| [vault_identity_group_policies.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_policies) | resource |
+| [vault_mount.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/mount) | resource |
+| [vault_policy.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
+| [vault_identity_entity.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/identity_entity) | data source |
+| [vault_policy_document.default](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/policy_document) | data source |
 
 ## Inputs
 
-| Name         | Description                       | Type        | Default   | Required   |
-| ------       | -------------                     | ------      | --------- | :--------: |
-| `entity_ids` | List of Vault Identity Member IDs | `list(any)` | `[]`      | no         |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_entity_ids"></a> [entity\_ids](#input\_entity\_ids) | List of Vault Identity Member IDs | `list(string)` | `[]` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| <a name="output_backend_path"></a> [backend\_path](#output\_backend\_path) | Secrets Backend Path as output |
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
