@@ -1,3 +1,10 @@
+![inspec-test](https://github.com/devops-adeel/terraform-vault-secrets-kv/actions/workflows/terraform-apply.yml/badge.svg)
+
+## Terraform Vault Secrets KV
+
+This terraform module mounts a static secret engine and ties a template ACL
+policy to an identity group.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 Usage:
 
