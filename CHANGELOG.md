@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/compare/v0.2.0...v0.3.0) (2021-03-30)
+
+
+### Features
+
+* updated README ([9e87e29](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/commit/9e87e2920759a7b9a0014ee5f7ad8329348020ba))
+
+
+### Bug Fixes
+
+* removed redundant default entity ([e03d158](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/commit/e03d1585cfdac169f64394f668cc64e14ef864c4))
+
 ## [0.2.0](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/compare/v0.1.0...v0.2.0) (2021-03-30)
 
 
