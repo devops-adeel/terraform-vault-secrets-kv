@@ -3,17 +3,15 @@
  *
  * ```hcl
  *
- * module "vault_kv" {
- *   source      = "git::https://github.com/devops-adeel/terraform-vault-secrets-kv.git?ref=v0.1.0"
- *   entity_ids = [module.vault_approle.entity_id]
+ * module "vault_static_secrets" {
+ *   source      = "git::https://github.com/devops-adeel/terraform-vault-secrets-kv.git?ref=v0.2.0"
  * }
  * ```
  */
 
 
 locals {
-  member_entity_ids = var.entity_ids != [] ? var.entity_ids : [vault_identity_entity.default.id]
-  secret_type       = "secret"
+  secret_type = "secret"
 }
 
 resource "vault_mount" "default" {
@@ -41,29 +39,17 @@ resource "vault_policy" "default" {
 }
 
 resource "vault_identity_group" "default" {
-  name              = "${local.secret_type}-creds"
-  type              = "internal"
-  external_policies = true
-  member_entity_ids = local.member_entity_ids
+  name                       = "${local.secret_type}-creds"
+  type                       = "internal"
+  external_policies          = true
+  external_member_entity_ids = true
 }
 
 resource "vault_identity_group_policies" "default" {
   group_id  = vault_identity_group.default.id
-  exclusive = false
+  exclusive = true
   policies = [
     "default",
     vault_policy.default.name,
   ]
-}
-
-data "vault_identity_entity" "default" {
-  entity_id = vault_identity_entity.default.id
-}
-
-resource "vault_identity_entity" "default" {
-  name = "${local.secret_type}-creds-default"
-  metadata = {
-    env     = "dev"
-    service = "example"
-  }
 }
