@@ -1,7 +1,14 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [0.2.0](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/compare/v0.1.0...v0.2.0) (2021-03-30)
 
-Commit messages must follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+### Features
+
+* automated docs/release ([3646300](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/commit/3646300e1096f46fdf01865f60ef14fe94da5009))
+* updated changelog header ([18f4004](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/commit/18f4004daa49080a71fc3f1a4fdc4c4686d2613b))
+
+
+### Bug Fixes
+
+* added pipeline status badge ([2c2b694](https://www.github.com/devops-adeel/terraform-vault-secrets-kv/commit/2c2b694f1f6a98d4aac13bd95fb6933861e4c217))
