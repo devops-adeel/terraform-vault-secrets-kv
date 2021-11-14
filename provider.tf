@@ -8,10 +8,8 @@ terraform {
     }
   }
 }
-
 provider "vault" {
   # Configuration option
 }
-#default = ["devcib", "devet", "devcpbb"
 
 
