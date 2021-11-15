@@ -27,4 +27,16 @@ provider "vault" {
     }
   }
 }
+provider "vault" {
+	namespace = "admin/terraform-vault-secrets-kv"
+	alias = "child"
+  auth_login {
+    namespace = "admin/terraform-vault-secrets-kv"
+    path      = "auth/approle/login"
 
+    parameters = {
+      role_id   = var.approle_id
+      secret_id = var.approle_secret
+    }
+  }
+}

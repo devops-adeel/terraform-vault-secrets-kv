@@ -11,6 +11,9 @@ data "vault_auth_backend" "default" {
 module "default" {
   count  = var.enable_vault_secret_kv == true ? 1 : 0
   source = "./module"
+	providers {
+		vault = vault.child
+	}
 }
 
 module "vault_approle" {
