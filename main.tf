@@ -4,7 +4,7 @@
  * ```hcl
  *
  * module "vault_static_secrets" {
- *   source      = "git::https://github.com/devops-adeel/terraform-vault-secrets-kv.git?ref=v0.2.0"
+ *   source      = "git::https://github.com/devops-adeel/terraform-vault-secrets-kv.git"
  * }
  * ```
  */
