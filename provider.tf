@@ -1,6 +1,5 @@
-# SET A TF WORKSPACE VARIABLE FOR "tf_token" with the TFC API Token
-# https://www.terraform.io/docs/providers/tfe/index.html
-# Configure the Terraform Enterprise Provider
+# Configure the Hashicorp Vault Provider
+# https://registry.terraform.io/providers/hashicorp/vault/latest/docs#provider-arguments
 terraform {
   required_providers {
     vault = {
